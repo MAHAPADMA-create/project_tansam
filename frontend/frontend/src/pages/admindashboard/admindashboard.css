@@ -1,0 +1,87 @@
+/* Main Layout */
+.layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Right Content Section */
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Dashboard Heading */
+.content h2 {
+    margin-top: 30px;
+    color: #333;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Dashboard Card */
+.dashboard-card {
+    margin-top: 20px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Statistics Cards */
+.dashboard-stats {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 220px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    margin: 0;
+    color: #007bff;
+    font-size: 18px;
+}
+
+.stat-card p {
+    margin-top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .dashboard-stats {
+        flex-direction: column;
+    }
+
+    .content h2 {
+        font-size: 24px;
+    }
+}
