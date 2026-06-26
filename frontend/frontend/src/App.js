@@ -6,7 +6,7 @@ import {
 
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
-// import Dashboard from "./pages/dashboard/dashboard";
+import Dashboard from "./pages/dashboard/dashboard";
 // import Users from "./pages/users/users";
 // import Admins from "./pages/admins/admins";
 // import Roles from "./pages/roles/roles";
@@ -34,10 +34,11 @@ function App() {
       element={<Login />}
     />
 
-    {/* <Route
+    <Route
       path="/dashboard"
       element={<Dashboard />}
     />
+    {/*
     <Route
  path="/users"
  element={<Users />}
