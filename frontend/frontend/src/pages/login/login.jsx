@@ -1,91 +1,124 @@
 import "./login.css";
+
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+import {
+ useNavigate
+} from "react-router-dom";
+
 import BASE_URL from "../../services/api";
 
 function Login() {
 
-  const navigate = useNavigate();
+ const navigate =
+ useNavigate();
 
-  const [form, setForm] = useState({
-    email: "",
-    password: ""
-  });
+ const [form,setForm] =
+ useState({
 
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    });
-  };
+   email:"",
+   password:""
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ });
 
-    try {
-      const response = await fetch(
-        `${BASE_URL}/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(form)
-        }
-      );
+ const handleChange=(e)=>{
 
-      const data = await response.json();
+   setForm({
+    ...form,
+    [e.target.name]:
+    e.target.value
+   });
 
-      alert(data.message);
+ };
 
-      if (response.ok) {
-        navigate("/dashboard"); // Change this route if needed
-      }
+const handleSubmit = async (e) => {
 
-    } catch (error) {
-      console.error(error);
-      alert("Login failed!");
+  e.preventDefault();
+
+  const response = await fetch(
+    `${BASE_URL}/login`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(form)
     }
-  };
-
-  return (
-    <div className="login-container">
-
-      <h2>Login</h2>
-
-      <form onSubmit={handleSubmit}>
-
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          required
-        />
-
-        <button type="submit">
-          Login
-        </button>
-
-        <p>
-          Don't have an account?
-          <a href="/register"> Register</a>
-        </p>
-
-      </form>
-
-    </div>
   );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    alert(data.message);
+    return;
+  }
+
+  localStorage.setItem(
+    "token",
+    data.token
+  );
+
+  localStorage.setItem(
+    "user",
+    JSON.stringify(data.user)
+  );
+
+  if (data.user.role === "superadmin") {
+
+    navigate("/dashboard");
+
+  } else if (data.user.role === "admin") {
+
+    navigate("/admin-dashboard");
+
+  } else {
+
+    navigate("/dashboard");
+
+  }
+
+};
+
+ return(
+
+  <div className="login-container"> 
+
+   <h2>Login</h2>
+
+   <form
+    onSubmit={
+      handleSubmit
+    }
+   >
+
+    <input
+      name="email"
+      placeholder="Email"
+      onChange={
+        handleChange
+      }
+    />
+
+    <input
+      name="password"
+      placeholder="Password"
+      onChange={
+        handleChange
+      }
+    />
+
+    <button>
+      Login
+    </button>
+
+    
+
+   </form>
+
+  </div>
+
+ );
+
 }
 
 export default Login;
