@@ -1,74 +1,96 @@
-/* MAIN LAYOUT */
+/* ==========================================
+   ADMIN DASHBOARD SPECIFIC STYLES
+   ========================================== */
 .layout {
   display: flex;
   min-height: 100vh;
-  background: #f4f6f9;
+  background-color: #f8fafc;
 }
 
-/* SIDEBAR AREA (LEFT) */
-.sidebar {
-  width: 220px;
-  background: #1f2937;
-  color: white;
-  padding: 20px;
-  position: fixed;
-  height: 100vh;
-  top: 0;
-  left: 0;
-}
-
-/* SIDEBAR LINKS */
-.sidebar a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
-  transition: 0.2s;
-}
-
-.sidebar a:hover {
-  background: #374151;
-}
-
-/* CONTENT AREA (RIGHT SIDE) */
-.content {
-  margin-left: 220px;
-  padding: 20px;
-  width: 100%;
-}
-
-/* HEADER */
-.header {
-  background: white;
-  padding: 15px 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+.layout .content,
+.main-content {
+  flex: 1;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  min-width: 0;
 }
 
-/* DASHBOARD TITLE */
-.content h2 {
-  margin-top: 10px;
-  color: #333;
+.dashboard-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-/* DASHBOARD CARDS (future use) */
-.card-grid {
+/* Typography */
+.dashboard-container h1,
+.dashboard-container h2 {
+  font-size: 2rem;
+  color: #1e293b;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Metrics Cards Grid */
+.dashboard-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
 }
 
 .card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #4a90e2; /* Admin Accent Blue */
+}
+
+/* Green highlight override specifically for Revenue card */
+.card:last-child p {
+  color: #10b981; 
+}
+
+/* Recent Activity Panel */
+.dashboard-section {
+  background: #ffffff;
+  padding: 26px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.dashboard-section ul {
+  list-style: none;
+}
+
+.dashboard-section li {
+  padding: 14px 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+.dashboard-section li:last-child {
+  border-bottom: none;
 }

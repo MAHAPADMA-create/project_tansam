@@ -1,66 +1,124 @@
-/* CENTER CONTAINER */
+/* Reset basic styling for a clean canvas */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Full-screen centering wrapper */
 .register-container {
-  width: 380px;
-  margin: 80px auto;
-  padding: 25px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
 }
 
-/* TITLE */
+/* Card Heading */
 .register-container h2 {
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: 24px;
+  color: #333333;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-/* INPUT FIELDS */
+/* Form Card Layout */
+.register-container form {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px; /* Slightly wider to feel roomy with more fields */
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Input Fields */
 .register-container input {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  outline: none;
-  transition: 0.2s;
+  padding: 14px 16px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333333;
+  background-color: #fafdff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Input Focus State */
 .register-container input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+  background-color: #ffffff;
 }
 
-/* BUTTON */
+/* Placeholder text style */
+.register-container input::placeholder {
+  color: #999999;
+}
+
+/* Submit Button */
 .register-container button {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background: #007bff;
-  color: white;
+  padding: 14px;
+  background-color: #4a90e2;
+  color: #ffffff;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 16px;
-  transition: 0.2s;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  margin-top: 8px;
 }
 
+/* Button Hover State */
 .register-container button:hover {
-  background: #0056b3;
+  background-color: #357abd;
 }
 
-/* LOGIN TEXT */
-.register-container p {
-  margin-top: 15px;
-  font-size: 14px;
+/* Button Active/Click State */
+.register-container button:active {
+  transform: scale(0.98);
 }
 
-.register-container a {
-  color: #007bff;
+/* "Already have an account?" Text Link Wrapper */
+.register-container form p {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666666;
+  margin-top: 10px;
+}
+
+/* Login Redirect Link */
+.register-container form p a {
+  color: #4a90e2;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  margin-left: 5px;
+  transition: color 0.2s ease;
 }
 
-.register-container a:hover {
+.register-container form p a:hover {
+  color: #2a6bb2;
   text-decoration: underline;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 480px) {
+  .register-container form {
+    padding: 28px 20px;
+  }
+  
+  .register-container h2 {
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+  }
 }

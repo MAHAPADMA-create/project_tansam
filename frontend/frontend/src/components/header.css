@@ -1,64 +1,55 @@
-/* Header Container */
+/* ==========================================
+   1. HEADER BAR CONTAINER
+   ========================================== */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 18px 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+  height: 70px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between; /* Pushes welcome message and user name to opposite sides */
+  align-items: center;
+  padding: 0 32px;
+  border-bottom: 1px solid #e2e8f0; /* Crisp subtle bottom border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02); /* Minimal soft shadow */
+  width: 100%;
 }
 
-/* Welcome Text */
+/* ==========================================
+   2. TYPOGRAPHY & IDENTITY DESIGN
+   ========================================== */
+/* "Welcome" Text Left Side Style */
 .header h2 {
-    margin: 0;
-    font-size: 26px;
-    color: #333;
-    font-weight: bold;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a; /* Slate 900 primary color */
+  letter-spacing: -0.2px;
 }
 
-/* User Name */
+/* Logged-In Username Right Side Style */
 .header h4 {
-    margin: 0;
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: #ffffff;
-    border-radius: 20px;
-    font-size: 16px;
-    font-weight: 500;
-    text-transform: capitalize;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4a90e2; /* App Primary Blue Accent */
+  background-color: rgba(74, 144, 226, 0.1); /* Very soft blue pill outline background */
+  padding: 6px 14px;
+  border-radius: 50px; /* Perfect pill boundary shape */
+  border: 1px solid rgba(74, 144, 226, 0.15);
 }
 
-/* Responsive Design */
+/* ==========================================
+   3. MOBILE RESPONSIVE ADAPTABILITY
+   ========================================== */
 @media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 15px 20px;
-    }
+  .header {
+    padding: 0 20px;
+    height: 60px;
+  }
 
-    .header h2 {
-        font-size: 22px;
-    }
+  .header h2 {
+    font-size: 1.1rem;
+  }
 
-    .header h4 {
-        font-size: 15px;
-        padding: 6px 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .header {
-        padding: 12px 15px;
-    }
-
-    .header h2 {
-        font-size: 20px;
-    }
-
-    .header h4 {
-        font-size: 14px;
-    }
+  .header h4 {
+    font-size: 0.85rem;
+    padding: 4px 10px;
+  }
 }

@@ -1,0 +1,63 @@
+/* ===== SIDEBAR (SAME AS ADMIN/SUPERADMIN STYLE) ===== */
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: #1f2937;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* LOGO */
+.logo {
+  font-size: 20px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* NAV LINKS */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.link:hover {
+  background: #374151;
+  color: white;
+}
+
+/* ACTIVE LINK */
+.link.active {
+  background: #4f46e5;
+  color: white;
+}
+
+/* LOGOUT BUTTON */
+.logout-btn {
+  margin-top: auto;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #ef4444;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}

@@ -1,0 +1,358 @@
+/* ==========================================
+   1. ROOT VARIABLES & THEME SYSTEM
+   ========================================== */
+:root {
+  /* Color Palette - Clean Professional Medical/Appointment Theme */
+  --primary-color: #4a90e2;
+  --primary-hover: #357abd;
+  --primary-light: rgba(74, 144, 226, 0.15);
+  
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --card-bg: #ffffff;
+  
+  --text-main: #333333;
+  --text-muted: #666666;
+  --text-placeholder: #999999;
+  
+  --border-color: #dcdcdc;
+  --input-bg: #fafdff;
+  
+  /* Layout & Animations */
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --shadow-main: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ==========================================
+   2. GLOBAL RESETS
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #f5f7fa;
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   3. REUSABLE AUTH PAGE LAYOUTS (Login & Register)
+   ========================================== */
+
+/* Full screen wrapper used by both Login & Register */
+.login-container,
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  padding: 20px;
+}
+
+/* Page Titles for Auth */
+.login-container h2,
+.register-container h2 {
+  margin-bottom: 24px;
+  color: var(--text-main);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Shared Form Card Container for Auth Pages */
+.login-container form,
+.register-container form {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-main);
+  width: 100%;
+  max-width: 410px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Universal Input Field Design for Auth */
+.login-container input,
+.register-container input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  color: var(--text-main);
+  background-color: var(--input-bg);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.login-container input:focus,
+.register-container input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-light);
+  background-color: var(--card-bg);
+}
+
+.login-container input::placeholder,
+.register-container input::placeholder {
+  color: var(--text-placeholder);
+}
+
+/* Universal Action Buttons for Auth */
+.login-container button,
+.register-container button {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-normal), transform 0.1s ease;
+  margin-top: 8px;
+}
+
+.login-container button:hover,
+.register-container button:hover {
+  background-color: var(--primary-hover);
+}
+
+.login-container button:active,
+.register-container button:active {
+  transform: scale(0.98);
+}
+
+/* Links & Redirection text (e.g., "Already have an account?") */
+.login-container form p,
+.register-container form p {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+.login-container form p a,
+.register-container form p a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+  transition: color var(--transition-fast);
+}
+
+.login-container form p a:hover,
+.register-container form p a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* ==========================================
+   4. DASHBOARD SPECIFIC LAYOUT & SECTIONS
+   ========================================== */
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.dashboard-container h2 {
+  font-size: 2.25rem;
+  color: var(--text-main);
+  margin-bottom: 30px;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 15px;
+}
+
+.dashboard-container h3 {
+  font-size: 1.4rem;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Two-column side-by-side grid structure */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* Base sections style blocks */
+.booking-section,
+.appointments-section {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-main);
+}
+
+/* Booking Form Setup */
+.booking-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Dashboard Form Input and Textarea Overrides */
+.booking-section input,
+.booking-section textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background-color: var(--input-bg);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.booking-section textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.booking-section input:focus,
+.booking-section textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-light);
+  background-color: #ffffff;
+}
+
+/* Dashboard Action Buttons */
+.booking-section button {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-normal), transform 0.1s ease;
+  margin-top: 5px;
+}
+
+.booking-section button:hover {
+  background-color: var(--primary-hover);
+}
+
+.booking-section button:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================
+   5. MODERN APPOINTMENT TABLE DESIGN
+   ========================================== */
+
+.table-wrapper {
+  overflow-x: auto; /* Handles responsiveness seamlessly */
+}
+
+.appointments-section table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.appointments-section th {
+  background-color: #f8fafc;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  padding: 16px;
+  border-bottom: 2px solid #edf2f7;
+}
+
+.appointments-section td {
+  padding: 16px;
+  border-bottom: 1px solid #edf2f7;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+/* Subtle row hover effect */
+.appointments-section tbody tr:hover {
+  background-color: #fafbfc;
+}
+
+/* Elegant status/type labels (Online vs Offline badges) */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.badge.online {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+.badge.offline {
+  background-color: #efebe9;
+  color: #4e342e;
+}
+
+/* State fallback if there are no records */
+.no-data {
+  text-align: center;
+  color: var(--text-placeholder);
+  font-style: italic;
+  padding: 40px !important;
+}
+
+/* ==========================================
+   6. RESPONSIVE MEDIA QUERIES
+   ========================================== */
+@media (max-width: 992px) {
+  /* On medium screens, stack the booking form above the table layout */
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container form,
+  .register-container form {
+    padding: 28px 20px;
+  }
+  
+  .login-container h2,
+  .register-container h2 {
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+  }
+  
+  .dashboard-container {
+    padding: 20px 10px;
+  }
+  
+  .booking-section,
+  .appointments-section {
+    padding: 20px 15px;
+  }
+}

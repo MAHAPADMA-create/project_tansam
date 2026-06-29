@@ -1,167 +1,80 @@
-import { useState, useEffect } from "react";
+import "./employeedashboard.css";
+import EmployeeSidebar from "../../components/employeesidebar";
+import Header from "../../components/header";
 
 function EmployeeDashboard() {
 
-  const [form, setForm] = useState({
-    meeting_title: "",
-    meeting_date: "",
-    meeting_time: "",
-    meeting_type: "",
-    description: ""
-  });
-
-  const [appointments, setAppointments] = useState([]);
-
-  const token = localStorage.getItem("token");
-
-  // Handle input change
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  // BOOK APPOINTMENT (FIXED)
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!token) {
-      alert("Please login again");
-      return;
-    }
-
-    const response = await fetch(
-      "http://localhost:3002/api/appointments/book",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`   // ✅ FIXED
-        },
-        body: JSON.stringify(form)
-      }
-    );
-
-    const data = await response.json();
-
-    if (response.ok) {
-      alert(data.message);
-      setForm({
-        meeting_title: "",
-        meeting_date: "",
-        meeting_time: "",
-        meeting_type: "",
-        description: ""
-      });
-      fetchAppointments();
-    } else {
-      alert(data.message || "Error booking appointment");
-    }
-  };
-
-  // FETCH APPOINTMENTS (FIXED)
-  const fetchAppointments = async () => {
-
-    if (!token) return;
-
-    const response = await fetch(
-      "http://localhost:3002/api/appointments/my",
-      {
-        method: "GET",
-        headers: {
-          "Authorization": `Bearer ${token}`   // ✅ FIXED
-        }
-      }
-    );
-
-    const data = await response.json();
-
-    if (response.ok) {
-      setAppointments(data);
-    }
-  };
-
-  useEffect(() => {
-    fetchAppointments();
-  }, []);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
-    <div style={{ padding: "20px" }}>
 
-      <h2>Employee Dashboard</h2>
+    <div className="layout">
 
-      {/* BOOK APPOINTMENT */}
-      <h3>Book Appointment</h3>
+      {/* YOUR ORIGINAL EMPLOYEE SIDEBAR (UNCHANGED) */}
+      <EmployeeSidebar />
 
-      <form onSubmit={handleSubmit}>
+      {/* MAIN CONTENT AREA ONLY */}
+      <div className="content">
 
-        <input
-          name="meeting_title"
-          placeholder="Title"
-          value={form.meeting_title}
-          onChange={handleChange}
-        />
+        {/* HEADER (STICKY FIX ONLY) */}
+        <Header />
 
-        <input
-          type="date"
-          name="meeting_date"
-          value={form.meeting_date}
-          onChange={handleChange}
-        />
+        {/* PAGE CONTENT */}
+        <div className="dashboard-container">
 
-        <input
-          type="time"
-          name="meeting_time"
-          value={form.meeting_time}
-          onChange={handleChange}
-        />
+          <h1>Employee Dashboard</h1>
 
-        <input
-          name="meeting_type"
-          placeholder="Type (Online/Offline)"
-          value={form.meeting_type}
-          onChange={handleChange}
-        />
+          <p className="welcome">
+            Welcome, <strong>{user?.name || "Employee"}</strong>
+          </p>
 
-        <textarea
-          name="description"
-          placeholder="Description"
-          value={form.description}
-          onChange={handleChange}
-        />
+          {/* CARDS */}
+          <div className="dashboard-cards">
 
-        <button type="submit">
-          Book Appointment
-        </button>
+            <div className="card">
+              <h3>Total Appointments</h3>
+              <p>12</p>
+            </div>
 
-      </form>
+            <div className="card">
+              <h3>Pending</h3>
+              <p>4</p>
+            </div>
 
-      {/* MY APPOINTMENTS */}
-      <h3>My Appointments</h3>
+            <div className="card">
+              <h3>Approved</h3>
+              <p>7</p>
+            </div>
 
-      <table border="1" cellPadding="10">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Type</th>
-          </tr>
-        </thead>
+            <div className="card">
+              <h3>Rejected</h3>
+              <p>1</p>
+            </div>
 
-        <tbody>
-          {appointments.map((item) => (
-            <tr key={item.id}>
-              <td>{item.meeting_title}</td>
-              <td>{item.meeting_date}</td>
-              <td>{item.meeting_time}</td>
-              <td>{item.meeting_type}</td>
-            </tr>
-          ))}
-        </tbody>
+          </div>
 
-      </table>
+          {/* BOX */}
+          <div className="dashboard-section">
+            <h2>Upcoming Appointment</h2>
+            <p>Project Discussion</p>
+            <p>📅 30 June 2026</p>
+            <p>🕙 10:00 AM</p>
+            <p>💻 Online</p>
+          </div>
+
+          {/* ACTIVITY */}
+          <div className="dashboard-section">
+            <h2>Recent Activity</h2>
+            <ul>
+              <li>Appointment booked successfully</li>
+              <li>HR approved your meeting</li>
+              <li>New appointment scheduled</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
   );

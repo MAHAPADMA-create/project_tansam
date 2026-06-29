@@ -1,0 +1,148 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+/* Main Content */
+
+.employee-main{
+
+    margin-left:260px;
+
+    padding:35px;
+
+}
+
+.employee-main h1{
+
+    font-size:34px;
+
+    color:#1f2937;
+
+    margin-bottom:30px;
+
+}
+
+/* Card */
+
+.appointment-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+/* Table */
+
+.appointment-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.appointment-table thead{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+.appointment-table th{
+
+    padding:18px;
+
+    text-align:left;
+
+}
+
+.appointment-table td{
+
+    padding:18px;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.appointment-table tbody tr:hover{
+
+    background:#f8fbff;
+
+}
+
+/* Status */
+
+.status{
+
+    padding:6px 15px;
+
+    border-radius:20px;
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.pending{
+
+    background:#f59e0b;
+
+}
+
+.approved{
+
+    background:#16a34a;
+
+}
+
+.rejected{
+
+    background:#dc2626;
+
+}
+
+.no-data{
+
+    text-align:center;
+
+    padding:40px;
+
+    color:#64748b;
+
+    font-size:18px;
+
+}
+
+@media(max-width:768px){
+
+.employee-main{
+
+margin-left:0;
+
+padding:20px;
+
+}
+
+.appointment-card{
+
+overflow:auto;
+
+}
+
+}

@@ -1,57 +1,102 @@
-/* CENTER LOGIN BOX */
+/* Reset basic styling for the login page environment if needed */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Full-screen centering wrapper */
 .login-container {
-  width: 360px;
-  margin: 100px auto;
-  padding: 25px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
 }
 
-/* TITLE */
+/* Card Heading */
 .login-container h2 {
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: 24px;
+  color: #333333;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-/* INPUT FIELDS */
+/* Form Layout */
+.login-container form {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input Fields */
 .login-container input {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  outline: none;
-  transition: 0.2s;
+  padding: 14px 16px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333333;
+  background-color: #fafdff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Input Focus State */
 .login-container input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+  background-color: #ffffff;
 }
 
-/* LOGIN BUTTON */
+/* Placeholder text style */
+.login-container input::placeholder {
+  color: #999999;
+}
+
+/* Submit Button */
 .login-container button {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background: #007bff;
-  color: white;
+  padding: 14px;
+  background-color: #4a90e2;
+  color: #ffffff;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 16px;
-  transition: 0.2s;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  margin-top: 10px;
 }
 
+/* Button Hover State */
 .login-container button:hover {
-  background: #0056b3;
+  background-color: #357abd;
 }
 
-/* OPTIONAL: SMALL TEXT STYLE */
-.login-container p {
-  margin-top: 15px;
-  font-size: 14px;
-  color: #555;
+/* Button Active/Click State */
+.login-container button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 480px) {
+  .login-container form {
+    padding: 24px;
+  }
+  
+  .login-container h2 {
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+  }
 }

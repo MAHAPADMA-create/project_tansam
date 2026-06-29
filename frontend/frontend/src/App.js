@@ -1,87 +1,119 @@
 import {
- BrowserRouter,
- Routes,
- Route
+  BrowserRouter,
+  Routes,
+  Route
 } from "react-router-dom";
 
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
 import Dashboard from "./pages/dashboard/dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
-import AdminAppointments from "./pages/admindashboard/AdminAppointments";
-// import Users from "./pages/users/users";
-// import Admins from "./pages/admins/admins";
-// import Roles from "./pages/roles/roles";
+import Profile from "./pages/profile/profile";
 import AdminDashboard from "./pages/admindashboard/admindashboard";
 import EmployeeDashboard from "./pages/employeedashboard/employeedashboard";
+
+import Appointment from "./pages/appointment/appointment";
+import MyAppointments from "./pages/myappointments/myappointments";
+
+import AdminAppointments from "./pages/adminappointments/adminappointments";
+
 function App() {
 
- return (
+  return (
 
-  <BrowserRouter>
+    <BrowserRouter>
 
-   <Routes>
+      <Routes>
 
-    <Route
-      path="/"
-      element={<Register />}
-    />
+        {/* Register */}
+        <Route
+          path="/"
+          element={<Register />}
+        />
 
-    <Route
-      path="/register"
-      element={<Register />}
-    />
+        <Route
+          path="/register"
+          element={<Register />}
+        />
 
-    <Route
-      path="/login"
-      element={<Login />}
-    />
+        {/* Login */}
+        <Route
+          path="/login"
+          element={<Login />}
+        />
 
-   <Route
-  path="/dashboard"
-  element={
-    <ProtectedRoute allowedRoles={["superadmin"]}>
-      <Dashboard />
-    </ProtectedRoute>
-  }
-/>
-    {/*
-    <Route
- path="/users"
- element={<Users />}
-/>
-    <Route
- path="/admins"
- element={<Admins />}
-/>
-    <Route
- path="/roles"
- element={<Roles />}
-/>*/}
-<Route
-  path="/admin-dashboard"
-  element={
-    <ProtectedRoute allowedRoles={["admin"]}>
-      <AdminDashboard />
-    </ProtectedRoute>
-  }
-/>
- 
-    <Route
-  path="/employee-dashboard"
+        {/* Super Admin */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute allowedRoles={["superadmin"]}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Admin */}
+        <Route
+          path="/admin-dashboard"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin-appointments"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <AdminAppointments />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Employee Dashboard */}
+        <Route
+          path="/employee-dashboard"
+          element={
+            <ProtectedRoute allowedRoles={["employee"]}>
+              <EmployeeDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Book Appointment */}
+        <Route
+          path="/appointment"
+          element={
+            <ProtectedRoute allowedRoles={["employee"]}>
+              <Appointment />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* My Appointments */}
+        <Route
+          path="/my-appointments"
+          element={
+            <ProtectedRoute allowedRoles={["employee"]}>
+              <MyAppointments />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+  path="/profile"
   element={
     <ProtectedRoute allowedRoles={["employee"]}>
-      <EmployeeDashboard />
+      <Profile />
     </ProtectedRoute>
   }
 />
-<Route path="/admin-appointments" element={<AdminAppointments />} />
 
-   </Routes>
+      </Routes>
 
-  </BrowserRouter>
+    </BrowserRouter>
 
- );
+  );
 
 }
 
