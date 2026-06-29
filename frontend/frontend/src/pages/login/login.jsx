@@ -47,7 +47,7 @@ const handleSubmit = async (e) => {
   );
 
   const data = await response.json();
-
+  console.log("LOGIN RESPONSE:", data);
   if (!response.ok) {
     alert(data.message);
     return;
@@ -62,21 +62,15 @@ const handleSubmit = async (e) => {
     "user",
     JSON.stringify(data.user)
   );
-
-  if (data.user.role === "superadmin") {
-
-    navigate("/dashboard");
-
-  } else if (data.user.role === "admin") {
-
-    navigate("/admin-dashboard");
-
-  } else {
-
-    navigate("/employee-dashboard");
-
-  }
-
+if (data.user.role === "superadmin") {
+  navigate("/superadmin/dashboard");
+} 
+else if (data.user.role === "admin") {
+  navigate("/admin/dashboard");
+} 
+else {
+  navigate("/employee/dashboard");
+}
 };
 
  return(

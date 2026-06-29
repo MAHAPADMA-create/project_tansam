@@ -1,31 +1,44 @@
-import Sidebar
-from "../../components/sidebar";
+import Sidebar from "../../components/sidebar";
+import Header from "../../components/header";
+import { useNavigate } from "react-router-dom";
 
-import Header
-from "../../components/header";
+function AdminDashboard() {
 
-function AdminDashboard(){
+  const navigate = useNavigate();
 
- return(
+  return (
+    <div className="layout">
 
-  <div className="layout">
+      <Sidebar />
 
-   <Sidebar/>
+      <div className="main-content">
 
-   <div className="content">
+        <Header />
 
-    <Header/>
+        <div className="dashboard-container">
 
-    <h2>
-      Admin Dashboard
-    </h2>
+          <h1>Admin Dashboard</h1>
 
-   </div>
+          <div className="dashboard-cards">
 
-  </div>
+            <div className="card" onClick={() => navigate("/users")}>
+              <h3>Users</h3>
+              <p>Manage Users</p>
+            </div>
 
- );
+            <div className="card" onClick={() => navigate("/admin-appointments")}>
+              <h3>Appointments</h3>
+              <p>View & Approve</p>
+            </div>
 
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  );
 }
 
 export default AdminDashboard;

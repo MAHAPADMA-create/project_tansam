@@ -1,0 +1,50 @@
+/* ================= MASTER LAYOUT SYSTEM ================= */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* 
+   THE CURE FOR THE CORNER ISSUE:
+   Targeting both '.main-content' AND '.content' explicitly.
+   Ensures the entire container content perfectly clears the sidebar width.
+*/
+.main-content, 
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-left: 260px; /* Pushes content exactly past your sidebar */
+  background-color: #f8fafc;
+}
+
+/* ================= STICKY HEADER FOR ALL THREE ================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  width: 100%;
+}
+
+/* ================= CENTRALIZED CONTENT ALIGNMENT ================= */
+.dashboard-container {
+  width: 100%;
+  max-width: 1200px;     /* Prevents layout from stretching infinitely to the far right */
+  margin: 0 auto;        /* Perfectly centers the elements in the middle of your screen */
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .main-content, 
+  .content {
+    margin-left: 0;
+  }
+}

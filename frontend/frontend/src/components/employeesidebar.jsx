@@ -17,22 +17,10 @@ function EmployeeSidebar() {
 
       <nav>
 
-        <NavLink to="/employee-dashboard" className="link">
-          🏠 Dashboard
-        </NavLink>
-
-        <NavLink to="/appointment" className="link">
-          📅 Book Appointment
-        </NavLink>
-
-        <NavLink to="/my-appointments" className="link">
-          📋 My Appointments
-        </NavLink>
-
-        <NavLink to="/profile" className="link">
-          👤 Profile
-        </NavLink>
-
+       <NavLink to="/employee/dashboard">Dashboard</NavLink>
+<NavLink to="/employee/appointment">Book Appointment</NavLink>
+<NavLink to="/employee/my-appointments">My Appointments</NavLink>
+<NavLink to="/employee/profile">Profile</NavLink>
       </nav>
 
       <button className="logout-btn" onClick={logout}>

@@ -1,87 +1,69 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
+
+/* layouts */
+import AdminLayout from "./layouts/AdminLayout";
+import SuperAdminLayout from "./layouts/SuperAdminLayout";
+import EmployeeLayout from "./layouts/EmployeeLayout";
+/* pages */
 import Dashboard from "./pages/dashboard/dashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
-import Profile from "./pages/profile/profile";
 import AdminDashboard from "./pages/admindashboard/admindashboard";
 import EmployeeDashboard from "./pages/employeedashboard/employeedashboard";
 
+import Users from "./pages/users/users";
+import Admins from "./pages/admins/admins";
+import Roles from "./pages/roles/roles";
+
 import Appointment from "./pages/appointment/appointment";
 import MyAppointments from "./pages/myappointments/myappointments";
-
 import AdminAppointments from "./pages/adminappointments/adminappointments";
 
+import Profile from "./pages/profile/profile";
+
+import ProtectedRoute from "./components/ProtectedRoute";
+
 function App() {
-
   return (
-
     <BrowserRouter>
-
       <Routes>
 
-        {/* Register */}
-        <Route
-          path="/"
-          element={<Register />}
-        />
+        {/* AUTH */}
+        <Route path="/" element={<Register />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
+        {/* ================= SUPERADMIN ================= */}
         <Route
-          path="/register"
-          element={<Register />}
-        />
-
-        {/* Login */}
-        <Route
-          path="/login"
-          element={<Login />}
-        />
-
-        {/* Super Admin */}
-        <Route
-          path="/dashboard"
+          path="/superadmin"
           element={
             <ProtectedRoute allowedRoles={["superadmin"]}>
-              <Dashboard />
+              <SuperAdminLayout />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="admins" element={<Admins />} />
+          <Route path="roles" element={<Roles />} />
+        </Route>
 
-        {/* Admin */}
+        {/* ================= ADMIN ================= */}
         <Route
-          path="/admin-dashboard"
+          path="/admin"
           element={
             <ProtectedRoute allowedRoles={["admin"]}>
-              <AdminDashboard />
+              <AdminLayout />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="users" element={<Users />} />
+          <Route path="appointments" element={<AdminAppointments />} />
+        </Route>
 
-        <Route
-          path="/admin-appointments"
-          element={
-            <ProtectedRoute allowedRoles={["admin"]}>
-              <AdminAppointments />
-            </ProtectedRoute>
-          }
-        />
-
-        {/* Employee Dashboard */}
-        <Route
-          path="/employee-dashboard"
-          element={
-            <ProtectedRoute allowedRoles={["employee"]}>
-              <EmployeeDashboard />
-            </ProtectedRoute>
-          }
-        />
-
-        {/* Book Appointment */}
+        {/* ================= EMPLOYEE (NO CHANGE) ================= */}
+        
         <Route
           path="/appointment"
           element={
@@ -91,7 +73,6 @@ function App() {
           }
         />
 
-        {/* My Appointments */}
         <Route
           path="/my-appointments"
           element={
@@ -100,21 +81,32 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
-  path="/profile"
+          path="/profile"
+          element={
+            <ProtectedRoute allowedRoles={["employee"]}>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+  path="/employee"
   element={
     <ProtectedRoute allowedRoles={["employee"]}>
-      <Profile />
+      <EmployeeLayout />
     </ProtectedRoute>
   }
-/>
+>
+  <Route path="dashboard" element={<EmployeeDashboard />} />
+  <Route path="appointment" element={<Appointment />} />
+  <Route path="my-appointments" element={<MyAppointments />} />
+  <Route path="profile" element={<Profile />} />
+</Route>
 
       </Routes>
-
     </BrowserRouter>
-
   );
-
 }
 
 export default App;

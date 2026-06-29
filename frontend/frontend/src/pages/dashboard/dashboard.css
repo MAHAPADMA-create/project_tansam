@@ -1,101 +1,97 @@
-/* ==========================================
-   SUPERADMIN DASHBOARD SPECIFIC STYLES
-   ========================================== */
+/* ================= MAIN LAYOUT FIX ================= */
 .layout {
   display: flex;
   min-height: 100vh;
+  width: 100%;
   background-color: #f8fafc;
 }
 
-.layout .content,
+/* 
+   THE CURE FOR THE CORNER ISSUE:
+   Pushes the main content area exactly 260px to the right 
+   so it sits perfectly next to your fixed sidebar instead of bunching into the corner.
+*/
 .main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   min-width: 0;
+  margin-left: 260px; /* Force clears your fixed sidebar width */
+  background-color: #f8fafc;
 }
 
-.dashboard-container {
-  max-width: 1400px;
+/* ================= STICKY HEADER ================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
   width: 100%;
-  margin: 0 auto;
-  padding: 30px;
+}
+
+/* ================= CENTERED DASHBOARD CONTAINER ================= */
+.dashboard-container {
+  width: 100%;
+  max-width: 1200px;     /* Binds the width so elements don't stretch into the far right corner */
+  margin: 0 auto;        /* Perfectly centers the dashboard panel in the mid area */
+  padding: 40px 30px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 28px;
 }
 
-/* Typography */
-.dashboard-container h1,
-.dashboard-container h2 {
-  font-size: 2rem;
-  color: #1e293b;
+.dashboard-container h1 {
+  font-size: 28px;
   font-weight: 700;
+  color: #0f172a;
   letter-spacing: -0.5px;
 }
 
-/* System Stats Grid */
+/* ================= CARDS GRID SYSTEM ================= */
 .dashboard-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
+  width: 100%;
 }
 
 .card {
   background: #ffffff;
-  padding: 24px;
+  padding: 28px 24px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
   border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
 }
 
 .card h3 {
-  font-size: 0.85rem;
+  font-size: 13px;
   text-transform: uppercase;
   color: #64748b;
+  margin-bottom: 8px;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
 }
 
 .card p {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #7c3aed; /* Superadmin Accent Purple */
-}
-
-/* Superadmin Data Table styling */
-.table-wrapper {
-  overflow-x: auto;
-  width: 100%;
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-}
-
-.dashboard-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-.dashboard-table th {
-  background-color: #f8fafc;
-  color: #64748b;
+  font-size: 20px;
   font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  padding: 16px;
-  border-bottom: 2px solid #edf2f7;
+  color: #1e293b;
 }
 
-.dashboard-table td {
-  padding: 16px;
-  border-bottom: 1px solid #edf2f7;
-  color: #334155;
-  font-size: 0.95rem;
-}
-
-.dashboard-table tbody tr:hover {
-  background-color: #fcfaff; /* Soft purple tint on hover */
+/* ================= RESPONSIVE VIEWPORTS ================= */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0; /* Drops the offset cleanly if your sidebar collapses on mobile screens */
+  }
+  
+  .dashboard-container {
+    padding: 20px;
+  }
 }

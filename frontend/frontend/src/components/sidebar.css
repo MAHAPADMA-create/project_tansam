@@ -1,120 +1,79 @@
-/* ==========================================
-   1. SIDEBAR CONTAINER SETUP
-   ========================================== */
+/* ================= SUPER ADMIN SIDEBAR STYLING ================= */
 .sidebar {
   width: 260px;
-  min-width: 260px;
   height: 100vh;
-  background-color: #0f172a; /* Slate 900 - Premium dark background */
+  background-color: #1e293b; /* Premium Dark Navy Slate */
   color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  padding: 24px 16px;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
-  border-right: 1px solid #1e293b;
-}
-
-/* Sidebar Title/Brand Branding */
-.sidebar h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #38bdf8; /* Accent Cyan/Blue text color */
-  letter-spacing: 0.5px;
-  margin-bottom: 32px;
-  padding-left: 12px;
-  text-transform: uppercase;
-}
-
-/* ==========================================
-   2. NAVIGATION LIST & LINK DESIGN
-   ========================================== */
-.sidebar ul {
-  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Roomy gap between menu listings */
+  padding: 30px 24px;
+  z-index: 1010;
 }
 
-/* Shared structure for standard list texts and react-router-dom Links */
-.sidebar li, 
-.sidebar li a {
-  display: flex;
-  align-items: center;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #94a3b8; /* Muted slate gray text color by default */
+/* SIDEBAR LOGO / BRANDING */
+.sidebar h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  margin-bottom: 40px;
+}
+
+/* NAVIGATION LINKS */
+.sidebar a {
+  display: block;
+  color: #94a3b8;
   text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 16px;
   border-radius: 8px;
-  transition: color 0.2s ease, background-color 0.2s ease;
-  width: 100%;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
 }
 
-/* Make sure the Link tag fills out the whole list item block clickable area */
-.sidebar li {
-  cursor: pointer;
-  padding: 12px 16px;
+/* HOVER STATE */
+.sidebar a:hover {
+  background-color: #334155;
+  color: #ffffff;
 }
 
-/* Handle layout mechanics if a React Router <Link> sits inside the <li> */
-.sidebar li:has(a) {
-  padding: 0; /* Clear container padding so link boundary extends fully */
-}
-
-.sidebar li a {
-  padding: 12px 16px;
-}
-
-/* ==========================================
-   3. HOVER & ACTIVE STATES
-   ========================================== */
-.sidebar li:hover,
-.sidebar li a:hover {
-  background-color: #1e293b; /* Slate 800 hover accent */
-  color: #ffffff; /* Turns bright crisp white on selection focus */
-}
-
-/* Optional active class for tracking current selected routes */
-.sidebar li.active,
-.sidebar li a.active {
-  background-color: #38bdf8;
-  color: #0f172a;
+/* ACTIVE LINK STATE (Automatically handled by NavLink) */
+.sidebar a.active {
+  background-color: #4f46e5; /* Active Indigo Brand Color */
+  color: #ffffff;
   font-weight: 600;
 }
 
-/* ==========================================
-   4. MOBILE RESPONSIVE ADAPTABILITY
-   ========================================== */
+/* LOGOUT BUTTON */
+.logout-btn {
+  margin-top: auto; /* Cleanly pushes the button to the bottom */
+  width: 100%;
+  padding: 12px;
+  background-color: #ef4444;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+}
+
+/* RESPONSIVE FALLBACK */
 @media (max-width: 768px) {
   .sidebar {
-    width: 70px;
-    min-width: 70px;
-    padding: 24px 8px;
-    align-items: center;
-  }
-
-  /* Compact text display on small tablets/screens */
-  .sidebar h3 {
-    font-size: 0.75rem;
-    padding-left: 0;
-    text-align: center;
-    margin-bottom: 24px;
-  }
-
-  .sidebar li {
-    padding: 12px;
-    justify-content: center;
-  }
-  
-  .sidebar li a {
-    padding: 12px;
-    justify-content: center;
-  }
-
-  /* Adjust copy display or toggle visibility with icons down the line */
-  .sidebar ul {
-    width: 100%;
+    display: none; /* Safely hides standard sidebar layout on mobile screens */
   }
 }

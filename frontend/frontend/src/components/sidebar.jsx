@@ -1,41 +1,44 @@
-import "./sidebar.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Sidebar() {
 
- return(
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  <div className="sidebar">
+  return (
+    <div className="sidebar">
 
-   <h3>Admin Panel</h3>
+      <h2 className="logo">My App</h2>
 
-   <ul>
+      {/* SUPERADMIN MENU */}
+      {user.role === "superadmin" && (
+        <>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink to="/admins">Admins</NavLink>
+          <NavLink to="/roles">Roles</NavLink>
+        </>
+      )}
 
-    <li>Dashboard</li>
-   <li>
-      <Link to="/users">
-        Users
-      </Link>
-    </li>
+      {/* ADMIN MENU */}
+      {user.role === "admin" && (
+        <>
+          <NavLink to="/admin-dashboard">Dashboard</NavLink>
+          <NavLink to="/admin/users">Users</NavLink>
+          <NavLink to="/admin/appointments">Appointments</NavLink>
+        </>
+      )}
 
-    <li>
-      <Link to="/roles">
-        Roles
-      </Link>
-    </li>
+      {/* EMPLOYEE MENU (UNCHANGED) */}
+      {user.role === "employee" && (
+        <>
+          <NavLink to="/employee-dashboard">Dashboard</NavLink>
+          <NavLink to="/appointment">Book Appointment</NavLink>
+          <NavLink to="/my-appointments">My Appointments</NavLink>
+          <NavLink to="/profile">Profile</NavLink>
+        </>
+      )}
 
-    <li>  <Link to="/admins">
-        Admins
-      </Link></li>
-
-    <li>Settings</li>
-
-   </ul>
-
-  </div>
-
- );
-
+    </div>
+  );
 }
 
 export default Sidebar;
