@@ -73,7 +73,7 @@ const handleSubmit = async (e) => {
 
   } else {
 
-    navigate("/dashboard");
+    navigate("/employee-dashboard");
 
   }
 
@@ -100,12 +100,11 @@ const handleSubmit = async (e) => {
     />
 
     <input
-      name="password"
-      placeholder="Password"
-      onChange={
-        handleChange
-      }
-    />
+    type="password"
+    name="password"
+    placeholder="Password"
+    onChange={handleChange}
+  />
 
     <button>
       Login

@@ -1,37 +1,65 @@
+import React from "react";
 import "./dashboard.css";
-import { useNavigate } from "react-router-dom";
+import Header from "../../components/header";
+import Sidebar from "../../components/sidebar";
 
 function Dashboard() {
-
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove token if stored
-    navigate("/");
-  };
-
   return (
-    <div className="dashboard-container">
+    <div className="layout">
 
-      <header className="dashboard-header">
-        <h1>Dashboard</h1>
-        <button onClick={handleLogout}>
-          Logout
-        </button>
-      </header>
+      {/* Sidebar */}
+      <Sidebar />
 
-      <div className="dashboard-content">
-        <h2>Welcome to the Dashboard!</h2>
-        <p>
-          You have successfully logged in.
-        </p>
+      {/* Main Content */}
+      <div className="main-content">
 
-        <div className="dashboard-card">
-          <h3>User Information</h3>
-          <p>Name: User</p>
-          <p>Email: user@example.com</p>
-          <p>Role: Admin</p>
+        {/* Header */}
+        <Header />
+
+        {/* Dashboard Body */}
+        <div className="dashboard-container">
+
+          <h1>Dashboard</h1>
+
+          <div className="dashboard-cards">
+
+            <div className="card">
+              <h3>Total Users</h3>
+              <p>120</p>
+            </div>
+
+            <div className="card">
+              <h3>Total Products</h3>
+              <p>45</p>
+            </div>
+
+            <div className="card">
+              <h3>Total Orders</h3>
+              <p>78</p>
+            </div>
+
+            <div className="card">
+              <h3>Total Revenue</h3>
+              <p>₹25,000</p>
+            </div>
+
+          </div>
+
+          <div className="dashboard-section">
+
+            <h2>Recent Activity</h2>
+
+            <ul>
+              <li>✅ New user registered</li>
+              <li>📦 New order received</li>
+              <li>🛒 Product updated</li>
+              <li>👤 Admin logged in</li>
+            </ul>
+
+          </div>
+
         </div>
+
       </div>
 
     </div>

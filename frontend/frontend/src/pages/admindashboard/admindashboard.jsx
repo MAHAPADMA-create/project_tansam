@@ -1,8 +1,8 @@
-import AdminSidebar
-from "../../../components/adminsidebar";
+import Sidebar
+from "../../components/sidebar";
 
 import Header
-from "../../../components/Header";
+from "../../components/header";
 
 function AdminDashboard(){
 
@@ -10,7 +10,7 @@ function AdminDashboard(){
 
   <div className="layout">
 
-   <AdminSidebar/>
+   <Sidebar/>
 
    <div className="content">
 

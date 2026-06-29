@@ -1,0 +1,92 @@
+/* MAIN PAGE CONTAINER */
+.employee-container {
+  padding: 20px;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+
+/* PAGE TITLE */
+.employee-container h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* SECTION TITLES */
+.employee-container h3 {
+  margin: 20px 0 10px;
+  color: #444;
+}
+
+/* BOOKING FORM BOX */
+.form-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 25px;
+  max-width: 600px;
+}
+
+/* INPUT FIELDS */
+.form-box input,
+.form-box textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.form-box input:focus,
+.form-box textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+/* BUTTON */
+.form-box button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.form-box button:hover {
+  background: #0056b3;
+}
+
+/* TABLE WRAPPER */
+.table-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+}
+
+table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* HOVER EFFECT */
+table tr:hover {
+  background: #f1f5ff;
+}

@@ -5,12 +5,13 @@ const bcrypt = require("bcrypt");
 exports.register = async (req, res) => {
 
     const {
-        name,
-        email,
-        password,
-        age,
-        role
-    } = req.body;
+    name,
+    email,
+    password,
+    age
+} = req.body;
+
+    const finalRole="employee";
 
     const checkUser =
         "SELECT * FROM users WHERE email=?";
@@ -47,7 +48,7 @@ exports.register = async (req, res) => {
                     email,
                     hashedPassword,
                     age,
-                    role
+                    finalRole
                 ],
                 (err, result) => {
 
@@ -122,13 +123,13 @@ exports.login = (req, res) => {
                     expiresIn: "1h"
                 }
             );
+            delete user.password;
 
             res.status(200).json({
                 message: "Login Successful",
                 token,
                 user
-            });
-
+});
         }
     );
 
